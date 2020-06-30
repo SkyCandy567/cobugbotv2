@@ -6,7 +6,7 @@ module.exports = {
   name: 'hander',
   description: 'Message Handler',
   async handle(client, msg) {
-    if (msg.content.includes("525382819808280597")) {
+    if (msg.content.includes(client.user.id)) {
       console.log("Someone is mentioning me");
       try {
         msg.react("🇸");
