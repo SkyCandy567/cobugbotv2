@@ -1,12 +1,13 @@
 {
-    "name": "bastardcobugbotJS",
-    "version": "1.0.0",
-    "description": "A modified asshole Reddit bot",
-    "main": "index.js",
-    "repository": "https://github.com/SkyCandy567/cobugbotv2",
-    "license": "MIT",
-    "dependencies": {
-        "discord.js": "^11.5.1",
-        "snoowrap": "^1.20.0"
-    }
+  "name": "bastardcobugbotJS",
+  "version": "1.0.0",
+  "description": "A modified asshole Reddit bot",
+  "main": "index.js",
+  "repository": "https://github.com/SkyCandy567/cobugbotv2",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
+    "snoowrap": "^1.20.0"
+  }
 }
