@@ -1,16 +1,12 @@
 {
-  "name": "cobugbotJS",
-  "version": "1.0.0",
-  "description": "An asshole Reddit bot",
-  "main": "index.js",
-  "repository": "https://github.com/aplomBomb/cobugbotV2.git",
-  "author": "aplomBomb",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "dblapi.js": "^2.3.0",
-    "discord.js": "^11.5.1",
-    "mongoose": "^5.9.10",
-    "snoowrap": "^1.20.0"
-  }
+    "name": "bastardcobugbotJS",
+    "version": "1.0.0",
+    "description": "A modified asshole Reddit bot",
+    "main": "index.js",
+    "repository": "https://github.com/SkyCandy567/cobugbotv2",
+    "license": "MIT",
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "snoowrap": "^1.20.0"
+    }
 }
