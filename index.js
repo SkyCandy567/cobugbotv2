@@ -13,9 +13,9 @@ client.on("ready", async () =>
 {
     console.log(`${client.user.tag} is online and ready to hurt your feelings`);
 
-    client.user.setPresence({
+    await client.user.setPresence({
         status: "online",
-        activity: {
+        game: {
             type: "LISTENING",
             name: "your dumb shit"
         }
@@ -26,12 +26,28 @@ client.on("message", async (message) =>
 {
     try
     {
-        messageHandler.handle(client, message);
+        await messageHandler.handle(client, message);
     }
     catch(e)
     {
         console.log("Error handling message: " + e.message);
     }
+});
+
+process.on('SIGINT', function() {
+    console.log("Stopping...");
+
+    (async () => {
+        await client.user.setPresence({
+            status: "dnd",
+            game: {
+                type: "WATCHING",
+                name: "for when I go offline."
+            }
+        });
+
+        process.exit();
+    })();
 });
 
 client.login(TOKEN);

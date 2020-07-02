@@ -24,7 +24,7 @@ insult.execute = async function(client, msg, cmd, args)
 {
     console.log("Insulting someone");
 
-    if(msg.deletable) msg.delete();
+    if(msg.deletable) await msg.delete();
 
     let insultOther = false;
     let insultRating = 0;
@@ -80,16 +80,16 @@ insult.execute = async function(client, msg, cmd, args)
         if(random.int(1, 20) == 1)
         {
             let complimentNum = random.int(0, complimentsArray.length - 1);
-            msg.channel.send(`${mention} ${complimentsArray[complimentNum]}`);
+            await msg.channel.send(`${mention} ${complimentsArray[complimentNum]}`);
         }
         else
         {
-            msg.channel.send(`${mention} ${randomInsult}`);
+            await msg.channel.send(`${mention} ${randomInsult}`);
         }
     }
     else
     {
-        msg.reply(`${randomInsult}`);
+        await msg.reply(`${randomInsult}`);
     }
 };
 

@@ -11,10 +11,10 @@ reddit.execute = async function(client, msg, cmd, args)
     console.log("Reddit is disabled for now.");
     return;
     let randomSearch = Math.floor(Math.random() * Math.floor(searchStatus.collection.length));
-    if(msg.deletable) msg.delete();
+    if(msg.deletable) await msg.delete();
 
     let sentMessage = await msg.channel.send(searchStatus.collection[randomSearch]);
 
     payload = await redditEngine.fetcher(cmd);
-    sentMessage.edit(payload);
+    await sentMessage.edit(payload);
 };
