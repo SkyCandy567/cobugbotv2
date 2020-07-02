@@ -1,5 +1,5 @@
 const insults = require('../insults.json');
-const compliments = require('../compliments');
+const compliments = require('../compliments.json');
 const insultsByRating = {};
 insults.forEach(insult => {
   if (insult.rating) {
@@ -50,7 +50,7 @@ module.exports = {
       let insultNum = rollDie(insultsByRating[insultRating].length) - 1;
       randomInsult = insultsByRating[insultRating][insultNum].insult;
     } else {
-      let insultNum = rollDie(insults.length) - 11;
+      let insultNum = rollDie(insults.length) - 1;
       randomInsult = insults[insultNum].insult;
     }
 
