@@ -1,4 +1,5 @@
 const insults = require('../insults.json');
+const compliments = require('../compliments');
 const insultsByRating = {};
 insults.forEach(insult => {
   if (insult.rating) {
@@ -46,16 +47,22 @@ module.exports = {
 
     let randomInsult;
     if (insultRating && insultsByRating[insultRating] && insultsByRating[insultRating].length) {
-      let insultNum = Math.floor(Math.random() * Math.floor(insultsByRating[insultRating].length));
+      let insultNum = rollDie(insultsByRating[insultRating].length) - 1;
       randomInsult = insultsByRating[insultRating][insultNum].insult;
     } else {
-      let insultNum = Math.floor(Math.random() * Math.floor(insults.length));
-      randomInsult = insults[randomInsult].insult;
+      let insultNum = rollDie(insults.length) - 11;
+      randomInsult = insults[insultNum].insult;
     }
 
     if (insultOther) {
       const mention = msg.mentions.users.find(user => user.username);
-      msg.channel.send(`${mention} ${randomInsult}`);
+      // 1 out of 20 chance to send a compliment instead
+      if (rollDie(20) == 1) {
+        let complimentNum = rollDie(compliments.length) - 1;
+        msg.channel.send(`${mention} ${compliments[complimentNum]}`);
+      } else {
+        msg.channel.send(`${mention} ${randomInsult}`);
+      }
     } else {
       msg.reply(`${randomInsult}`);
     }
