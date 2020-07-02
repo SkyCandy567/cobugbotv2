@@ -36,7 +36,7 @@ client.on("message", async (message) =>
 
 client.login(TOKEN);
 
-['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGTRAP', 'SIGABRT', 'SIGTERM'].forEach(sig => {
+['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGABRT', 'SIGTERM'].forEach(sig => {
     process.on(sig, function () {
         console.log('Caught signal: ' + sig);
         terminate(sig);
