@@ -34,7 +34,17 @@ client.on("message", async (message) =>
     }
 });
 
-process.on('SIGINT', function() {
+client.login(TOKEN);
+
+['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGTRAP', 'SIGABRT', 'SIGTERM'].forEach(sig => {
+    process.on(sig, function () {
+        console.log('Caught signal: ' + sig);
+        terminate(sig);
+    });
+});
+
+function terminate(sig)
+{
     console.log("Stopping...");
 
     (async () => {
@@ -48,6 +58,4 @@ process.on('SIGINT', function() {
 
         process.exit();
     })();
-});
-
-client.login(TOKEN);
+}
