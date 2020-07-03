@@ -13,6 +13,6 @@ reddit.execute = async function(client, msg, cmd, args)
 
     let sentMessage = await msg.channel.send(searchStatus.collection[randomSearch]);
 
-    payload = await redditEngine.fetcher(cmd);
+    let payload = await redditEngine.fetcher(cmd);
     await sentMessage.edit(payload);
 };
