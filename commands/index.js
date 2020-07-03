@@ -1,10 +1,15 @@
+const ping = require('./ping');
+const insult = require('./insult');
+const reddit = require('./reddit');
+
 module.exports = {
-    ping: require('./ping'),
-    insult: require('./insult'),
-    dj: require('./reddit'),
-    st: require('./reddit'),
-    ihi: require('./reddit'),
-    meme: require('./reddit'),
-    gif: require('./reddit'),
-    til: require('./reddit')
+    ping: ping,
+    insult: insult,
+    dj: reddit,
+    st: reddit,
+    ihi: reddit,
+    meme: reddit,
+    gif: reddit,
+    til: reddit,
+    alpt: reddit
 };

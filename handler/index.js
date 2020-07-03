@@ -16,7 +16,8 @@ handler.handle = async function(client, msg)
       await msg.react("🇹");
       await msg.react("🇫");
       await msg.react("🇺");
-    } catch(e)
+    }
+    catch(e)
     {
       console.log("Failed to react with emoji");
     }
@@ -35,7 +36,8 @@ handler.handle = async function(client, msg)
       try
       {
         await commands[cmd].execute(client, msg, cmd, args);
-      } catch(e)
+      }
+      catch(e)
       {
         console.log("Command " + cmd + " failed with error " + e.message);
       }

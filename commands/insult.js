@@ -55,29 +55,19 @@ insult.execute = async function(client, msg, cmd, args)
         insultOther = true;
     }
 
-    // 1 out of 20 chance the insult will backfire on themselves
-    if(random.int(1, 20) == 1)
+    // 1 out of 5 chance the insult will backfire on themselves
+    if(random.int(1, 5) == 1)
     {
         insultOther = false;
     }
 
-    let randomInsult;
-    if(insultRating && insultsByRating[insultRating] && insultsByRating[insultRating].length)
-    {
-        let insultNum = random.int(0, insultsByRating[insultRating].length - 1);
-        randomInsult = insultsByRating[insultRating][insultNum].insult;
-    }
-    else
-    {
-        let insultNum = random.int(0, insultsArray.length - 1);
-        randomInsult = insultsArray[insultNum].insult;
-    }
+    let randomInsult = insult.randomInsult(insultRating);
 
     if(insultOther)
     {
         const mention = msg.mentions.users.find(user => user.username);
-        // 1 out of 20 chance to send a compliment instead
-        if(random.int(1, 20) == 1)
+        // 1 out of 5 chance to send a compliment instead
+        if(random.int(1, 5) == 1)
         {
             let complimentNum = random.int(0, complimentsArray.length - 1);
             await msg.channel.send(`${mention} ${complimentsArray[complimentNum]}`);
@@ -93,3 +83,20 @@ insult.execute = async function(client, msg, cmd, args)
     }
 };
 
+insult.randomInsult = function(insultRating)
+{
+    let randomInsult;
+
+    if(insultRating && insultsByRating[insultRating] && insultsByRating[insultRating].length)
+    {
+        let insultNum = random.int(0, insultsByRating[insultRating].length - 1);
+        randomInsult = insultsByRating[insultRating][insultNum].insult;
+    }
+    else
+    {
+        let insultNum = random.int(0, insultsArray.length - 1);
+        randomInsult = insultsArray[insultNum].insult;
+    }
+
+    return randomInsult;
+};
