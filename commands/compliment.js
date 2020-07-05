@@ -46,6 +46,6 @@ compliment.execute = async function(client, msg, cmd, args)
 
 compliment.help = function(cmd)
 {
-    return "compliment another user; use @ to target a user";
+    return "❤️ compliment another user; use @ to target a user";
 };
 
