@@ -17,3 +17,8 @@ reddit.execute = async function(client, msg, cmd, args)
     let payload = await redditEngine.fetcher(cmd);
     await sentMessage.edit(payload);
 };
+
+reddit.help = function(cmd)
+{
+    return redditEngine.help(cmd);
+};
