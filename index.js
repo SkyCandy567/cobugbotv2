@@ -22,7 +22,7 @@ client.on("ready", async () =>
         status: "online",
         game: {
             type: "LISTENING",
-            name: "your dumb shit"
+            name: "your dumb shit &help"
         }
     });
 
