@@ -1,24 +1,10 @@
 const insult = {};
 module.exports = insult;
 
-const insultsArray = require('../insults.json');
-const complimentsArray = require('../compliments.json');
+const insultEngine = require("../lib/insultEngine");
+const complimentEngine = require("../lib/complimentEngine");
+
 const random = require('random');
-
-const insultsByRating = {};
-
-insultsArray.forEach(insult =>
-{
-    if(insult.rating)
-    {
-        if(!insultsByRating[insult.rating])
-        {
-            insultsByRating[insult.rating] = [];
-        }
-
-        insultsByRating[insult.rating].push(insult);
-    }
-});
 
 insult.execute = async function(client, msg, cmd, args)
 {
@@ -61,7 +47,7 @@ insult.execute = async function(client, msg, cmd, args)
         insultOther = false;
     }
 
-    let randomInsult = insult.randomInsult(insultRating);
+    let randomInsult = insultEngine.randomInsult(insultRating);
 
     if(insultOther)
     {
@@ -69,8 +55,8 @@ insult.execute = async function(client, msg, cmd, args)
         // 1 out of 5 chance to send a compliment instead
         if(random.int(1, 5) == 1)
         {
-            let complimentNum = random.int(0, complimentsArray.length - 1);
-            await msg.channel.send(`${mention} ${complimentsArray[complimentNum]}`);
+            let randomCompliment = complimentEngine.randomCompliment();
+            await msg.channel.send(`${mention} ${randomCompliment}`);
         }
         else
         {
@@ -83,20 +69,3 @@ insult.execute = async function(client, msg, cmd, args)
     }
 };
 
-insult.randomInsult = function(insultRating)
-{
-    let randomInsult;
-
-    if(insultRating && insultsByRating[insultRating] && insultsByRating[insultRating].length)
-    {
-        let insultNum = random.int(0, insultsByRating[insultRating].length - 1);
-        randomInsult = insultsByRating[insultRating][insultNum].insult;
-    }
-    else
-    {
-        let insultNum = random.int(0, insultsArray.length - 1);
-        randomInsult = insultsArray[insultNum].insult;
-    }
-
-    return randomInsult;
-};
