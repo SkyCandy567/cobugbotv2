@@ -69,3 +69,8 @@ insult.execute = async function(client, msg, cmd, args)
     }
 };
 
+insult.help = function(cmd)
+{
+    return "insult another user; use @ to target a user";
+};
+

@@ -7,11 +7,14 @@ help.execute = async function(client, msg, cmd, args)
 {
     if(msg.deletable) await msg.delete();
 
-    let helpMsg = "";
+    let helpMsg = "----------------------------- HELP -----------------------------\n";
 
     Object.keys(commandHelp).forEach(help =>
     {
-        helpMsg += help + " - " + commandHelp[help](help) + "\n";
+        helpMsg += `**${help}**` + " - ";
+        if(commandHelp[help](help))
+            helpMsg += `_${commandHelp[help](help)}_`;
+        helpMsg += "\n";
     });
 
     await msg.channel.send(helpMsg);

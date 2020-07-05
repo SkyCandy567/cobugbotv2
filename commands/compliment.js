@@ -1,10 +1,10 @@
-const insult = {};
-module.exports = insult;
+const compliment = {};
+module.exports = compliment;
 
 const insultEngine = require("../lib/insultEngine");
 const complimentEngine = require("../lib/complimentEngine");
 
-insult.execute = async function(client, msg, cmd, args)
+compliment.execute = async function(client, msg, cmd, args)
 {
     console.log("Complimenting someone");
 
@@ -42,5 +42,10 @@ insult.execute = async function(client, msg, cmd, args)
         let randomInsult = insultEngine.randomInsult();
         await msg.reply(`${randomInsult}`);
     }
+};
+
+compliment.help = function(cmd)
+{
+    return "compliment another user; use @ to target a user";
 };
 
