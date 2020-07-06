@@ -48,10 +48,13 @@ insult.execute = async function(client, msg, cmd, args)
     }
 
     let randomInsult = insultEngine.randomInsult(insultRating);
+    let mention;
 
     if(insultOther)
+        mention = msg.mentions.users.find(user => user.username);
+
+    if(mention)
     {
-        const mention = msg.mentions.users.find(user => user.username);
         // 1 out of 5 chance to send a compliment instead
         if(random.int(1, 5) == 1)
         {
