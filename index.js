@@ -97,7 +97,6 @@ function randomlyInsultChannelMember(channel)
 {
     (async () =>
     {
-        let channel = botServers[botServerId].primaryBotChannel.channel;
         let randomMember = channel.members.filter(member => !member.user.bot).random();
         let randomInsult = insultEngine.randomInsult();
         await channel.send(`${randomMember} ${randomInsult}`);
