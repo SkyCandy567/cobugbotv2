@@ -97,9 +97,16 @@ function randomlyInsultChannelMember(channel)
 {
     (async () =>
     {
-        let randomMember = channel.members.filter(member => !member.user.bot).random();
-        let randomInsult = insultEngine.randomInsult();
-        await channel.send(`${randomMember} ${randomInsult}`);
+        try
+        {
+            let randomMember = channel.members.filter(member => !member.user.bot).random();
+            let randomInsult = insultEngine.randomInsult();
+            await channel.send(`${randomMember} ${randomInsult}`);
+        }
+        catch(e)
+        {
+            console.log(e.stack);
+        }
     })();
 }
 
@@ -107,8 +114,15 @@ function sendTodayILearned(channel)
 {
     (async () =>
     {
-        let msg = await redditEngine.fetcher('til');
-        await channel.send(msg);
+        try
+        {
+            let msg = await redditEngine.fetcher('til');
+            await channel.send(msg);
+        }
+        catch(e)
+        {
+            console.log(e.stack);
+        }
     })();
 }
 
