@@ -41,8 +41,8 @@ insult.execute = async function(client, msg, cmd, args)
         insultOther = true;
     }
 
-    // 1 out of 5 chance the insult will backfire on themselves
-    if(random.int(1, 5) == 1)
+    // 1 out of 10 chance the insult will backfire on themselves
+    if(random.int(1, 10) == 1)
     {
         insultOther = false;
     }
@@ -55,8 +55,8 @@ insult.execute = async function(client, msg, cmd, args)
 
     if(mention)
     {
-        // 1 out of 5 chance to send a compliment instead
-        if(random.int(1, 5) == 1)
+        // 1 out of 20 chance to send a compliment instead
+        if(random.int(1, 20) == 1)
         {
             let randomCompliment = complimentEngine.randomCompliment();
             await msg.channel.send(`${mention} ${randomCompliment}`);
